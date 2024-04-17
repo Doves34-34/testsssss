@@ -1,5 +1,3 @@
-mod session;
-use session::SessionManager;
 use std::time::Duration;
 use tokio::sync::Mutex;
 use std::sync::Arc;
@@ -78,9 +76,19 @@ pub struct BootArgs {
     #[clap(short = 't', long, default_value = "http")]
     typed: ProxyType,
     /// Session ID to IP mapping with TTL
-    pub session_manager: SessionManager,
+    #[clap(long)]
+    session_ttl: Option<u64>,
 }
+#[derive(Debug, StructOpt)]
+pub struct BootArgs {
+    /// Sets the speed
+    #[structopt(short = "s", long = "speed")]
+    speed: f64,
 
+    /// Sets the distance
+    #[structopt(short = "d", long = "distance")]
+    distance: f64,
+}
 #[derive(Clone, Debug)]
 pub enum ProxyType {
     Http,
