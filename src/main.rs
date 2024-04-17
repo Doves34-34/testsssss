@@ -1,7 +1,7 @@
 use std::time::Duration;
 use tokio::sync::Mutex;
 use std::sync::Arc;
-
+use structopt::StructOpt;
 pub mod alloc;
 #[cfg(target_family = "unix")]
 mod daemon;
@@ -79,16 +79,7 @@ pub struct BootArgs {
     #[clap(long)]
     session_ttl: Option<u64>,
 }
-#[derive(Debug, StructOpt)]
-pub struct BootArgs {
-    /// Sets the speed
-    #[structopt(short = "s", long = "speed")]
-    speed: f64,
 
-    /// Sets the distance
-    #[structopt(short = "d", long = "distance")]
-    distance: f64,
-}
 #[derive(Clone, Debug)]
 pub enum ProxyType {
     Http,

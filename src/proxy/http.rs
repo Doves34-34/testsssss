@@ -1,5 +1,5 @@
 
-use crate::SessionManager;
+use crate::session_manager::SessionManager;
 use crate::proxy::auth;
 use crate::BootArgs;
 use cidr::Ipv6Cidr;
